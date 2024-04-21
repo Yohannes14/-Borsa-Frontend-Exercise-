@@ -1,4 +1,3 @@
-import { COLORS } from "app/utils/color";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 
@@ -10,7 +9,8 @@ const UserCard = ({ item }: any) => (
         />
         <View style={styles.userInfo}>
             <Text style={styles.name}>{item.firstName} {item.lastName}</Text>
-            <Text style={styles.username}>Username: {item.userName}</Text>
+            <Text style={styles.username}>Username: @{item.userName}</Text>
+            <Text style={{}}>{item.email}</Text>
             {item.isBuyer && <Text style={styles.buyerLabel}>Buyer</Text>}
         </View>
     </View>
