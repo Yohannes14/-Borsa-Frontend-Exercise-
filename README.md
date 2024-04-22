@@ -32,8 +32,10 @@
 
 - **Endpoint:** `PUT /profile?id=${userId}`
 - **Functionality:** Enables logged-in users to view and edit their personal information.
-## 
-![Alt Text](assets/home.png)
+## Screenshots
+
+![UI1](assets/home.png)
+
 
 
 ## Getting Started
