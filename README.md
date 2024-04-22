@@ -8,26 +8,32 @@
 - **Functionality:** Allows new users to register by providing necessary details.
 ## Screenshots
 
-![UI1](public/UI1.png)
-![UI2](public/UI2.png)
-
+![UI1](assets/signup.png)
 
 ### Login Screen
 
 - **Endpoint:** `POST /login`
 - **Functionality:** Users can log in by providing their email and password.
-.
+## Screenshots
+
+![UI1](assets/login.png)
+
 
 ### Home Screen
 
 - **Endpoint:** `GET /fetch/dummy/user-v2`
 - **Functionality:** Retrieves and displays a list of 100 mock users.
+## Screenshots
+
+![UI1](assets/home.png)
 
 
 ### Edit Profile Screen
 
 - **Endpoint:** `PUT /profile?id=${userId}`
 - **Functionality:** Enables logged-in users to view and edit their personal information.
+## 
+![Alt Text](assets/home.png)
 
 
 ## Getting Started
