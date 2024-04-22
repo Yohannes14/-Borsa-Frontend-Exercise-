@@ -6,6 +6,11 @@
 
 - **Endpoint:** `POST /register/v2`
 - **Functionality:** Allows new users to register by providing necessary details.
+## Screenshots
+
+![UI1](public/UI1.png)
+![UI2](public/UI2.png)
+
 
 ### Login Screen
 

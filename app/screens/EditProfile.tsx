@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getAuthToken } from 'app/utils/tokenStorage';
+import { getAuthToken, saveAuthToken } from 'app/utils/tokenStorage';
 import UserProfile from 'app/components/UserProfile';
 import CustomButton from 'app/components/button/CustomButton';
 import { Controller, useForm } from 'react-hook-form';
@@ -16,7 +16,6 @@ const EditProfile = () => {
     const dispatch = useAppDispatch()
     const { error, loading, user: currentUser } = useAppSelector(state => state?.profile);
 
-
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -29,6 +28,19 @@ const EditProfile = () => {
 
         fetchUser();
     }, []);
+
+    /// to save user after update profile
+
+    useEffect(() => {
+        const saveToken = async () => {
+            if (currentUser) {
+                await saveAuthToken(currentUser)
+            }
+        }
+        saveToken();
+    }, [currentUser])
+
+
 
     const {
         control,
@@ -71,6 +83,7 @@ const EditProfile = () => {
     }
     useEffect(() => {
         if (currentUser) {
+            //setUser(currentUser);
             setEditProfilePress(false);
         }
     }, [currentUser]);
@@ -84,8 +97,8 @@ const EditProfile = () => {
 
             )}
             <UserProfile
-                name={`${user?.firstName} ${user?.lastName} `}
-                userName={user?.userName}
+                name={`${!!currentUser ? currentUser?.firstName : user?.firstName} ${!!currentUser ? currentUser?.lastName : user?.lastName} `}
+                userName={!!currentUser ? currentUser?.userName : user?.userName}
                 onEditPress={() => setEditProfilePress(true)}
             />
 

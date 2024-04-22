@@ -1,5 +1,4 @@
 import * as type from "app/types/actionTypes";
-import { LOGIN_SUCCESS } from '../types';
 import {
     LoginFailureAction,
     LoginRequestAction,
@@ -31,7 +30,7 @@ export const loginRequest = (credentials: { email: string; password: string }): 
 });
 
 export const loginSuccess = (user: User): LoginSuccessAction => ({
-    type: LOGIN_SUCCESS,
+    type: type.LOGIN_SUCCESS,
     payload: user,
 });
 
