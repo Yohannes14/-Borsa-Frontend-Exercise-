@@ -34,7 +34,7 @@
 - **Functionality:** Enables logged-in users to view and edit their personal information.
 ## Screenshots
 
-![UI1](assets/home.png)
+![UI1](assets/profile.png)
 
 
 
