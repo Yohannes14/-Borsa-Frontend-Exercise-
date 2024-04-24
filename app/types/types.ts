@@ -162,3 +162,31 @@ export type ProfileActionTypes =
     | UpdateProfileRequestAction
     | UpdateProfileSuccessAction
     | UpdateProfileFailureAction;
+
+
+
+export interface UserToken {
+    _id: string;
+    address: string;
+    createdAt: string;
+    displayContact: boolean;
+    email: string;
+    firstName: string;
+    hideBuyerCard: boolean;
+    hideTravelerCard: boolean;
+    isAdmin: boolean;
+    isBuyer: boolean;
+    isDeleted: boolean;
+    isFirstTime: boolean;
+    isImperial: boolean;
+    isTraveler: boolean;
+    isVerified: boolean;
+    lastName: string;
+    location: any; 
+    profilePic: string;
+    pushTokens: string[];
+    rollLeft: number;
+    token: string;
+    updatedAt: string;
+    userName: string;
+}

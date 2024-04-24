@@ -5,26 +5,28 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import EditProfile from '../screens/EditProfile';
 import { COLORS } from 'app/utils/color';
-import { getAuthToken } from 'app/utils/tokenStorage';
+import { getAuthToken, removeAuthToken } from 'app/utils/tokenStorage';
+import { useAppSelector } from 'app/redux/store';
 
 const Stack = createNativeStackNavigator();
 
 
 const MainNavigator: React.FC = () => {
-    const [user, setUser] = useState<any>(null);
+    // const [user, setUser] = useState<any>(null);
+    const { isAuthenticated, user } = useAppSelector(state => state?.auth);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const usrData = await getAuthToken();
-                setUser(usrData);
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         try {
+    //             const usrData = await getAuthToken();
+    //             setUser(usrData);
 
-            } catch (error) {
-                return
-            }
-        };
-        fetchUser();
-    }, []);
+    //         } catch (error) {
+    //             return
+    //         }
+    //     };
+    //     fetchUser();
+    // }, []);
 
     return (
         <Stack.Navigator>
@@ -38,7 +40,7 @@ const MainNavigator: React.FC = () => {
                     },
                     headerRight: () => (
                         <TouchableOpacity
-                            onPress={() => navigation.navigate('Profile')}
+                            onPress={async () => navigation.navigate("Profile")}
                             style={{
                                 flexDirection: 'row',
                                 alignItems: 'center',

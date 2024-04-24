@@ -1,6 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getAuthToken, saveAuthToken } from 'app/utils/tokenStorage';
 import UserProfile from 'app/components/UserProfile';
 import CustomButton from 'app/components/button/CustomButton';
 import { Controller, useForm } from 'react-hook-form';
@@ -11,34 +10,10 @@ import { useAppDispatch, useAppSelector } from 'app/redux/store';
 import { updateProfileRequest } from 'app/redux/actions/userAction';
 
 const EditProfile = () => {
-    const [user, setUser] = useState<any>(null);
     const [editProfilePress, setEditProfilePress] = useState(false);
     const dispatch = useAppDispatch()
+    const { user } = useAppSelector(state => state?.auth);
     const { error, loading, user: currentUser } = useAppSelector(state => state?.profile);
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const usrData = await getAuthToken();
-                setUser(usrData);
-            } catch (error) {
-                return;
-            }
-        };
-
-        fetchUser();
-    }, []);
-
-    /// to save user after update profile
-
-    useEffect(() => {
-        const saveToken = async () => {
-            if (currentUser) {
-                await saveAuthToken(currentUser)
-            }
-        }
-        saveToken();
-    }, [currentUser])
 
 
 

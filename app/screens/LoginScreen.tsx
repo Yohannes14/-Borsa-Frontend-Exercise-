@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MaterialIcons } from "@expo/vector-icons";
 import CustomTextInput from 'app/components/form/CustomTextInput';
 import { COLORS } from 'app/utils/color';
@@ -8,7 +8,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { useAppDispatch, useAppSelector } from 'app/redux/store';
 import { loginRequest } from 'app/redux/actions/authAction';
-import { saveAuthToken } from 'app/utils/tokenStorage';
 
 const LoginScreen = () => {
     const navigation = useNavigation();
@@ -36,15 +35,6 @@ const LoginScreen = () => {
         setLoginPress(true)
         dispatch(loginRequest(values))
     }
-
-    useEffect(() => {
-        const saveToken = async () => {
-            if (isAuthenticated && loginPress && user) {
-                await saveAuthToken(user)
-            }
-        }
-        saveToken();
-    }, [isAuthenticated, loginPress])
 
 
     return (

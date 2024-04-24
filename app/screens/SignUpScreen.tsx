@@ -9,8 +9,6 @@ import { useNavigation } from '@react-navigation/native';
 import { useAppDispatch, useAppSelector } from 'app/redux/store';
 import { signupRequest } from 'app/redux/actions/authAction';
 import { User, UserInputProps } from 'app/types/types';
-import { useDispatch } from 'react-redux';
-import { saveAuthToken } from 'app/utils/tokenStorage';
 
 
 
@@ -64,14 +62,6 @@ const SignUpScreen = () => {
     dispatch(signupRequest(data));
   }
 
-  useEffect(() => {
-    const saveToken = async () => {
-      if (isAuthenticated && signupPress && user) {
-        await saveAuthToken(user)
-      }
-    }
-    saveToken();
-  }, [isAuthenticated, signupPress])
 
 
   return (
